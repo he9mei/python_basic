@@ -51,10 +51,48 @@ file_test=open(path, 'r')
 print("读取多行:", file_test.readlines())  # 读取多行: ['hello\n', 'python']
 '''
 # writelines()
+'''
 file_test=open(path, 'w')
 str_lines=["hello\n", "python\n ", "welcom!"]
 file_test.writelines(str_lines)
 file_test=open(path,'r')
 print("多行写入结果是：\n", file_test.read())
-
+'''
 # (4)关闭文件
+# 加了close()函数更安全，可以避免在某些操作系统或设置中进行无用的修改，也可以避免用完系统中所打开文件的配额。
+# 对内容更改过的文件一定要记得关闭，因为写入的数据可能被缓存，如果程序出现崩溃，被缓存内容就无法写入文件了。安全起见，记得关闭。
+# file_test.close()
+# try语句，将close()方法放在finally子句中执行。
+'''
+try:
+    file_test = open(path, 'w')
+    file_test.write("hello python")
+finally:
+    if file_test:
+        file_test.close()
+# Python中引入with语句，自动帮助我们调用close()方法。更改如下：
+with open(path, 'w') as f:
+    file_test=open(path, 'w')
+    file_test.write("hello python")
+'''
+# (5)文件重命名
+# Python中os模块为我们提供rename方法。
+# os.rename(current_file_name,new_file_name)  如果文件不在当前目录下，需要带上绝对路径。
+'''
+import os
+os.rename("D:\\hehuaimei\\python_file_test1.txt", "D:\\hehuaimei\\python_file_test.txt")
+'''
+# 删除文件
+# Python中os模块为我们提供了remove方法。
+# os.remove(file_name)
+'''
+import os
+try:
+    os.remove(path)
+except Exception as e:
+    print(e)
+    print("file not found!")
+'''
+
+
+
