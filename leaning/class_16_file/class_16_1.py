@@ -6,8 +6,8 @@
 # access_mode变量：指打开文件的模式，有只读、写入、追加等。默认模式是r只读模式。
 # buffering变量：如果buffering的值为0就不会寄存；值为1就会寄存；大于1的整数表示寄存区缓冲大小；负值表示缓冲大小就是系统默认值。
 path = "D:\\hehuaimei\\python_file_test.txt"  # \进行转义
-file_name = open(path)
-print(file_name.name)  # D:\hehuaimei\python_file_test.txt
+file_test = open(path)
+print(file_test.name)  # D:\hehuaimei\python_file_test.txt
 # 路径补充：绝对路径是从根文件夹开始；相对路径是相对于当前工作目录的路径，用"."号代替这个路径值。
 
 # 附加打开文件模式：
